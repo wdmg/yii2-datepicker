@@ -1,2 +1,2 @@
-# yii2-datepicker
-Bootstrap DatePicker Widget for Yii2
+# Yii2 DatePicker
+Bootstrap3 DatePicker Widget for Yii2
