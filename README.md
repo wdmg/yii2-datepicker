@@ -23,10 +23,10 @@ Example of standalone widget:
     echo DatePicker::widget([
         'model' => $model,
         'attribute' => 'datetime',
-        'template' => '<div class="input-group">{input}{addon}</div>',
         'options' => [
            'class' => 'form-control'
         ],
+        'template' => '{input}{addon}',
         // 'addon' => null, // Uncomment and place addon string template or use options below instead
         'addonTag' => 'span',
         'addonString' => '',
@@ -60,6 +60,7 @@ Example of use with ActiveForm:
         'options' => [
             'class' => 'form-control'
         ],
+        'template' => '{input}{addon}',
         // 'addon' => null, // Uncomment and place addon string template or use options below instead
         'addonTag' => 'span',
         'addonString' => '',
