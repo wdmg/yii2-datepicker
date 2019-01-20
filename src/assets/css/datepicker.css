@@ -1,0 +1,6 @@
+.popover.popover-datepicker {
+    min-width: 360px;
+}
+.popover.popover-datepicker .popover-title {
+    font-size: 1.5rem;
+}
