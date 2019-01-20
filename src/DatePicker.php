@@ -13,10 +13,29 @@ class DatePicker extends InputWidget
 {
 
     public $addon = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>';
-    //public $template = '{label}\n<div class="input-group">{input}\n{addon}</div>\n{hint}\n{error}';
-    //public $template = '<div class="input-group">{input}{addon}</div>';
-    //public $template = '{beginLabel}{labelTitle}{endLabel}<div class="input-group">{input}{addon}</div>{error}{hint}';
     public $template = '<div class="input-group">{input}{addon}</div>';
+
+    public $options = [
+        'class' => 'form-control'
+    ];
+
+    public $addonTag = 'span';
+    public $addonString = '';
+    public $addonOptions = [
+        'class' => 'glyphicon glyphicon-calendar',
+        'aria-hidden' => 'true'
+    ];
+
+    public $addonContainerTag = 'span';
+    public $addonContainerOptions = [
+        'class' => 'input-group-btn'
+    ];
+
+    public $addonButtonTag = 'button';
+    public $addonButtonOptions = [
+        'class' => 'btn btn-default',
+        'type' => 'button'
+    ];
 
     /**
      * @inheritdoc
@@ -32,15 +51,16 @@ class DatePicker extends InputWidget
     public function run()
     {
 
-        $this->options['class'] = 'form-control';
+        if(!$this->addon)
+            $this->addon = Html::tag($this->addonTag, $this->addonString, $this->addonOptions);
 
         if($this->hasModel())
             $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
         else
             $input = Html::textInput($this->name, $this->value, $this->options);
 
-        $this->addon = Html::tag('button', $this->addon, ['class' => 'btn btn-default', 'type' => 'button']);
-        $this->addon = Html::tag('span', $this->addon, ['class' => 'input-group-btn']);
+        $this->addon = Html::tag($this->addonButtonTag, $this->addon, $this->addonButtonOptions);
+        $this->addon = Html::tag($this->addonContainerTag, $this->addon, $this->addonContainerOptions);
         $input = strtr($this->template, ['{input}' => $input, '{addon}' => $this->addon]);
 
         echo $input;
