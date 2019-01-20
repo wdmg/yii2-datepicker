@@ -12,8 +12,8 @@ use yii\base\InvalidConfigException;
 class DatePicker extends InputWidget
 {
 
-    public $addon = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>';
-    public $template = '<div class="input-group">{input}{addon}</div>';
+    public $addon = null;
+    public $template = '{input}{addon}';
 
     public $options = [
         'class' => 'form-control'
@@ -50,6 +50,8 @@ class DatePicker extends InputWidget
      */
     public function run()
     {
+        // Register assets
+        $this->registerAssets();
 
         if(!$this->addon)
             $this->addon = Html::tag($this->addonTag, $this->addonString, $this->addonOptions);
@@ -61,9 +63,24 @@ class DatePicker extends InputWidget
 
         $this->addon = Html::tag($this->addonButtonTag, $this->addon, $this->addonButtonOptions);
         $this->addon = Html::tag($this->addonContainerTag, $this->addon, $this->addonContainerOptions);
+
+        $this->template = Html::tag('div', $this->template, [
+            'class' => 'input-group',
+            'data-rel' => 'datepicker'
+        ]);
+
         $input = strtr($this->template, ['{input}' => $input, '{addon}' => $this->addon]);
 
         echo $input;
+
+    }
+
+    /**
+     * Register required assets for the widgets
+     */
+    public function registerAssets()
+    {
+        DatePickerAssets::register($this->getView());
     }
 
 }
