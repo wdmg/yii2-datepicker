@@ -1,11 +1,6 @@
 (function($) {
-    /*$.fn.Datepicker = function(options) {
 
-    }*/
-
-
-
-    $('body').on('click', '[data-rel="datepicker"] .btn', function() {
+    $('body').on('click', '[data-rel="datepicker"] .input-group-btn > .btn', function() {
 
         var header, html, dateFormat, currentDate, currentMonth, currentYear, daysStrings, monthsStrings;
 
@@ -108,11 +103,18 @@
             this.dateFormat = 'M';
 
 
+        var prevYearLink = '<a href="javascript:getPrevYear();" class="btn btn-small pull-left">&lt;&lt;</a>';
+        var nextYearLink = '<a href="javascript:getNextYear();" class="btn btn-small pull-right">&gt;&gt;</a>';
+        var prevMonthLink = '<a href="javascript:getPrevMonth();" class="btn btn-small pull-left">&lt;</a>';
+        var nextMonthLink = '<a href="javascript:getNextMonth();" class="btn btn-small pull-right">&gt;</a>';
+
         // Write selected month and year
-        header = '<div id="header header-month-year">' + this.monthsStrings[this.currentMonth]['short'] + ' – ' + this.currentYear + '</div>';
+        header = prevYearLink + prevMonthLink + this.monthsStrings[this.currentMonth]['short'] + ' – ' + this.currentYear + nextYearLink + nextMonthLink;
+
 
         // Start rendering table of calendar
-        html = '<table class="table calendar-table">';
+        html = '<table class="table table-condensed table-calendar">';
+
 
         // Generate the days of the week
         html += '<thead>';
@@ -166,22 +168,29 @@
                 if (currentDay < 1) {
                     // Dates from prev month
                     pastDay = lastDayOfLastMonth - firstDayOfCurrentMonth + nextDay++;
-                    html += '<td class="prev-month-day text-muted text-center">' + pastDay + '</td>';
+                    html += '<td class="prev-month-day"><a href="#" class="btn btn-link btn-small disabled text-muted">' + pastDay + '</a></td>';
                 } else if (currentDay > lastDayOfCurrentMonth) {
                     // Dates from next month
-                    html += '<td class="next-month-day text-muted text-center">' + (nextDay++) + '</td>';
+                    html += '<td class="next-month-day"><a href="#" class="btn btn-link btn-small disabled text-muted">' + (nextDay++) + '</a></td>';
                 } else {
+
+
+                    var currentDateYear = this.currentYear.toString();
+                    var currentDateMonth = (this.currentMonth + 1).toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '');
+                    var currentDateDay = currentDay.toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '');
+
                     // Current month dates
                     if (this.currentDay == currentDay)
-                        html += '<td class="current-month-day active text-center">' + currentDay + '</td>';
+                        html += '<td class="current-month-day"><a href="javascript:setDate(' + currentDateYear + '-'+ currentDateMonth +'-' + currentDateDay +');" class="btn btn-primary btn-small">' + currentDay + '</a></td>';
                     else
-                        html += '<td class="current-month-day text-center">' + currentDay + '</td>';
+                        html += '<td class="current-month-day"><a href="javascript:setDate(' + currentDateYear + '-'+ currentDateMonth +'-' + currentDateDay +');" class="btn btn-link btn-small">' + currentDay + '</a></td>';
 
                     nextDay = 1;
                 }
-                if (week % 7 == 6 && currentDay >= lastDayOfCurrentMonth) {
-                    rows = 6; // no more rows
-                }
+
+                if (week % 7 == 6 && currentDay >= lastDayOfCurrentMonth)
+                    rows = 6;
+
                 week++;
             }
 
@@ -200,7 +209,5 @@
         });
 
     });
-
-
 
 })(jQuery);
