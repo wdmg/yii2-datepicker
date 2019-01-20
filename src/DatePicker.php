@@ -1,6 +1,6 @@
 <?php
 
-namespace kartik\datepicker;
+namespace wdmg\widgets;
 
 use Yii;
 use yii\helpers\Html;
