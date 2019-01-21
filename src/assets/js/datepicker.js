@@ -57,6 +57,8 @@
                 this.$popover = null;
                 this._$popover = null;
 
+
+
                 $(this._$element).on('click', '.input-group-btn > button[data-toggle="popover"]', function(event) {
 
                     _this._$popover = $(event.target);
@@ -64,7 +66,14 @@
                     var popoverId = _this._$popover.attr('aria-describedby');
                     _this.$popover = $('#'+popoverId);
 
-                    _this.showCurrent();
+                    var $input = $(_this._$element).find('input');
+
+                    if($input) {
+                        var inputDate = new Date($input.val().replace(' ', 'T'));
+                        _this.showCurrent(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
+                    } else {
+                        _this.showCurrent();
+                    }
 
                     _this._$popover.popover({
                         placement: 'auto',
@@ -83,7 +92,7 @@
                     _this._$popover.popover('show');
 
                     _this._$popover.on('show.bs.popover', function() {
-                        //return _this._config.onShow.call(_this);
+                        return _this._config.onShow.call(_this);
                     }).on('shown.bs.popover', function() {
 
                         var popoverId = _this._$popover.attr('aria-describedby');
@@ -91,7 +100,8 @@
 
                         $popover.on("click", 'a[data-set]', function (event) {
                             event.preventDefault();
-                            _this.setDate();
+                            var newDate = $(event.target).data('set');
+                            _this.setDate(newDate);
                             return false;
                         });
 
@@ -119,11 +129,11 @@
                             return false;
                         });
 
-                        //return _this._config.onShown.call(_this);
+                        return _this._config.onShown.call(_this);
                     }).on('hide.bs.popover', function() {
-                        //return _this._config.onHide.call(_this);
+                        return _this._config.onHide.call(_this);
                     }).on('hidden.bs.popover', function() {
-                        //return _this._config.onHidden.call(_this);
+                        return _this._config.onHidden.call(_this);
                     });
                 });
             }
@@ -393,8 +403,22 @@
                     }
                 },
                 setDate: {
-                    value: function setDate() {
+                    value: function setDate(newDate) {
                         console.log('Call `setDate` method');
+
+                        var $input = $(this._$element).find('input');
+                        var oldInputDate = new Date($input.val().replace(' ', 'T'));
+                        var newInputDate = new Date(newDate);
+
+                        $input.val(
+                            newInputDate.getFullYear().toString() + '-' +
+                            (newInputDate.getMonth() + 1).toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '') + '-' +
+                            newInputDate.getDate().toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '') + ' ' +
+                            oldInputDate.getHours().toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '') + ':' +
+                            oldInputDate.getMinutes().toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '') +':'+
+                            oldInputDate.getSeconds().toString().replace(/\b(\d{1})\b/g, '0$1').replace(/-/g, '')
+                        );
+
                     }
                 },
             }, {
