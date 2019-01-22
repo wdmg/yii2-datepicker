@@ -21,12 +21,19 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "^2.0.13"
+    "yiisoft/yii2": "^2.0.13",
+    "yiisoft/yii2-bootstrap": "*",
+    "bower-asset/bootstrap-datepicker-plugin": "1.0.0"
   },
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
       "wdmg\\widgets\\": "src"
+    }
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "bower-asset-library": "vendor/bower"
     }
   }
 }
