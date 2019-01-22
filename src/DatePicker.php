@@ -37,6 +37,12 @@ class DatePicker extends InputWidget
         'type' => 'button'
     ];
 
+    public $clientOptions = [
+        'className' => '.datepicker',
+        'input' => '.form-control',
+        'toggle' => '.input-group-btn > button',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -80,7 +86,20 @@ class DatePicker extends InputWidget
      */
     public function registerAssets()
     {
-        DatePickerAssets::register($this->getView());
+        $js = [];
+        $view = $this->getView();
+
+        DatePickerAssets::register($view);
+
+        $id = $this->options['id'];
+        //$selector = ";$('#$id').parents('.input-group')";
+        $selector = ";$('[data-rel=\"datepicker\"]')";
+
+        $options = !empty($this->clientOptions) ? Json::encode($this->clientOptions) : '';
+        $js[] = "$selector.datepicker($options);";
+
+        $view->registerJs(implode("\n", $js));
+
     }
 
 }
