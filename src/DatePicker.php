@@ -37,11 +37,13 @@ class DatePicker extends InputWidget
         'type' => 'button'
     ];
 
-    public $clientOptions = [
+    public $pluginOptions = [
         'className' => '.datepicker',
         'input' => '.form-control',
         'toggle' => '.input-group-btn > button',
     ];
+
+    private $datepickerId = null;
 
     /**
      * @inheritdoc
@@ -56,29 +58,34 @@ class DatePicker extends InputWidget
      */
     public function run()
     {
-        // Register assets
-        $this->registerAssets();
-
-        if(!$this->addon)
-            $this->addon = Html::tag($this->addonTag, $this->addonString, $this->addonOptions);
-
+        // Input field
         if($this->hasModel())
             $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
         else
             $input = Html::textInput($this->name, $this->value, $this->options);
 
+        // Input addon
+        if(!$this->addon)
+            $this->addon = Html::tag($this->addonTag, $this->addonString, $this->addonOptions);
+
         $this->addon = Html::tag($this->addonButtonTag, $this->addon, $this->addonButtonOptions);
         $this->addon = Html::tag($this->addonContainerTag, $this->addon, $this->addonContainerOptions);
 
+        // Build input group
+        $this->datepickerId = 'datepicker-' . $this->options['id'];
         $this->template = Html::tag('div', $this->template, [
+            'id' => $this->datepickerId,
             'class' => 'input-group',
             'data-rel' => 'datepicker'
         ]);
 
+        // Collect tags to complate widget
         $input = strtr($this->template, ['{input}' => $input, '{addon}' => $this->addon]);
 
-        echo $input;
+        // Register assets
+        $this->registerAssets();
 
+        echo $input;
     }
 
     /**
@@ -89,15 +96,14 @@ class DatePicker extends InputWidget
         $js = [];
         $view = $this->getView();
 
+        // Register active datepicker assets to view
         DatePickerAssets::register($view);
 
-        $id = $this->options['id'];
-        //$selector = ";$('#$id').parents('.input-group')";
-        $selector = ";$('[data-rel=\"datepicker\"]')";
+        // Parse plugin options and insert inline
+        $pluginOptions = !empty($this->pluginOptions) ? Json::encode($this->pluginOptions) : '';
+        $js[] = ";jQuery('#" . $this->datepickerId . "').datepicker($pluginOptions);";
 
-        $options = !empty($this->clientOptions) ? Json::encode($this->clientOptions) : '';
-        $js[] = "$selector.datepicker($options);";
-
+        // Register datepicker component initial script
         $view->registerJs(implode("\n", $js));
 
     }

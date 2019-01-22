@@ -26,23 +26,12 @@ Example of standalone widget:
         'options' => [
            'class' => 'form-control'
         ],
-        'template' => '{input}{addon}',
-        // 'addon' => null, // Uncomment and place addon string template or use options below instead
-        'addonTag' => 'span',
-        'addonString' => '',
-        'addonOptions' => [
-           'class' => 'glyphicon glyphicon-calendar',
-           'aria-hidden' => 'true'
-        ],
-        'addonContainerTag' => 'span',
-        'addonContainerOptions' => [
-           'class' => 'input-group-btn'
-        ],
-        'addonButtonTag' => 'button',
-        'addonButtonOptions' => [
-           'class' => 'btn btn-default',
-           'type' => 'button'
+        'pluginOptions' => [
+            'className' => '.datepicker',
+            'input' => '.form-control',
+            'toggle' => '.input-group-btn > button',
         ]
+        ...
     ]);
     
     ?>
@@ -60,28 +49,36 @@ Example of use with ActiveForm:
         'options' => [
             'class' => 'form-control'
         ],
-        'template' => '{input}{addon}',
-        // 'addon' => null, // Uncomment and place addon string template or use options below instead
-        'addonTag' => 'span',
-        'addonString' => '',
-        'addonOptions' => [
-            'class' => 'glyphicon glyphicon-calendar',
-            'aria-hidden' => 'true'
-        ],
-        'addonContainerTag' => 'span',
-        'addonContainerOptions' => [
-            'class' => 'input-group-btn',
-        ],
-        'addonButtonTag' => 'button',
-        'addonButtonOptions' => [
-            'class' => 'btn btn-default',
-            'type' => 'button'
+        'pluginOptions' => [
+            'className' => '.datepicker',
+            'input' => '.form-control',
+            'toggle' => '.input-group-btn > button',
         ]
+        ...
     ]);
     ...
     ActiveForm::end();
     
     ?>
+
+
+# Options
+
+DatePicker extends InputWidget so you can use any options available for this widget. In addition, you can use these custom options if necessary:
+
+| Name                   | Type    | Default                   | Description            |
+|:---------------------- | ------- |:------------------------- |:---------------------- |
+| options                | array   | `['class' => 'form-control']` | Standard options for the input widget. |
+| pluginOptions          | array   | `['className' => '.datepicker', 'input' => '.form-control', 'toggle' => '.input-group-btn > button']` | Plugin DatePicker options passed to js. Read more here (https://github.com/wdmg/bootstrap-datepicker). |
+| template               | string  | {input}{addon}            | Widget output template.|
+| addon                  | string  | `null`                    | Addon template addon. Use this option if you will not use the options listed below. |
+| addonTag               | string  | span                      | Addon input tag.  |
+| addonString            | string  | `empty`                   | Addon content. Usually absent if you are using glypicon or fontawesome. |
+| addonOptions           | array   | `['class' => 'glyphicon glyphicon-calendar', 'aria-hidden' => 'true']` | Options tag addon input widget. |
+| addonContainerTag      | string  | span                      | Addon container tag.  |
+| addonContainerOptions  | array   | `['class' => 'input-group-btn']` | Options of the container addon input widget. |
+| addonButtonTag         | string  | button                    | Tag who will display a DatePicker widget for input. |
+| addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
 * v.1.0.0 - Widget in progress development.
