@@ -23,7 +23,7 @@
   "require": {
     "yiisoft/yii2": "^2.0.13",
     "yiisoft/yii2-bootstrap": "*",
-    "bower-asset/bootstrap-datepicker-plugin": "^1.0.2"
+    "bower-asset/bootstrap-datepicker-plugin": "^1.0.3"
   },
   "minimum-stability": "dev",
   "autoload": {

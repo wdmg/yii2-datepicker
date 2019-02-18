@@ -13,7 +13,8 @@ class DatePicker extends InputWidget
 {
 
     public $addon = null;
-    public $template = '{input}{addon}';
+    //public $template = "{label}\n{beginWrapper}\n{input}{addon}\n{hint}\n{error}\n{endWrapper}";
+    public $template = "{input}{addon}";
 
     public $options = [
         'class' => 'form-control'
@@ -68,6 +69,10 @@ class DatePicker extends InputWidget
         if(!$this->addon)
             $this->addon = Html::tag($this->addonTag, $this->addonString, $this->addonOptions);
 
+        $error = Html::error($this->model, $this->attribute, ['class' => 'help-block']);
+        if(!$error)
+            $error = '';
+
         $this->addon = Html::tag($this->addonButtonTag, $this->addon, $this->addonButtonOptions);
         $this->addon = Html::tag($this->addonContainerTag, $this->addon, $this->addonContainerOptions);
 
@@ -80,7 +85,7 @@ class DatePicker extends InputWidget
         ]);
 
         // Collect tags to complate widget
-        $input = strtr($this->template, ['{input}' => $input, '{addon}' => $this->addon]);
+        $input = strtr($this->template, ['{label}' => '', '{beginWrapper}' => '', '{input}' => $input, '{addon}' => $this->addon, '{hint}' => '', '{error}' => $error, '{endWrapper}' => '']);
 
         // Register assets
         $this->registerAssets();
