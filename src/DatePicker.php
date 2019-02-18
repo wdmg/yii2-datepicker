@@ -42,6 +42,7 @@ class DatePicker extends InputWidget
         'className' => '.datepicker',
         'input' => '.form-control',
         'toggle' => '.input-group-btn > button',
+        'format' => 'YYYY-MM-DD HH:mm:ss'
     ];
 
     private $datepickerId = null;
@@ -77,7 +78,7 @@ class DatePicker extends InputWidget
         $this->addon = Html::tag($this->addonContainerTag, $this->addon, $this->addonContainerOptions);
 
         // Build input group
-        $this->datepickerId = 'datepicker-' . $this->options['id'];
+        $this->datepickerId = 'dp-' . $this->options['id'];
         $this->template = Html::tag('div', $this->template, [
             'id' => $this->datepickerId,
             'class' => 'input-group',
@@ -106,7 +107,7 @@ class DatePicker extends InputWidget
 
         // Parse plugin options and insert inline
         $pluginOptions = !empty($this->pluginOptions) ? Json::encode($this->pluginOptions) : '';
-        $js[] = ";jQuery('#" . $this->datepickerId . "').datepicker($pluginOptions);";
+        $js[] = "; jQuery('#" . $this->datepickerId . "').datepicker($pluginOptions);";
 
         // Register datepicker component initial script
         $view->registerJs(implode("\n", $js));
