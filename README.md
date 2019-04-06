@@ -83,4 +83,4 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
-* v.1.0.1 - Widget in progress development.
+* v.1.0.2 - Widget in progress development.
