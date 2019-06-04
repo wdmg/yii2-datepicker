@@ -5,7 +5,7 @@ Bootstrap3 DatePicker Widget for Yii2
 
 # Requirements 
 * PHP 5.6 or higher
-* Yii2 v.2.0.19 and newest
+* Yii2 v.2.0.20 and newest
 * Yii2 Bootstrap
 * [Bootstrap DatePicker](https://github.com/wdmg/bootstrap-datepicker) v.1.1.0 and newest.
 
@@ -83,5 +83,4 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
-* v.1.0.4 - Update Yii2 version
-* v.1.0.3 - Widget in progress development.
+* v.1.0.5 - Update Yii2 version
