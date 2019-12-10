@@ -21,7 +21,7 @@ class DatePickerAssets extends AssetBundle
         parent::init();
         $this->css = YII_DEBUG ? ['css/datepicker.css'] : ['css/datepicker.min.css'];
         $this->js = YII_DEBUG ? ['js/datepicker.js'] : ['js/datepicker.min.js'];
-        $this->depends = [\yii\web\JqueryAsset::className()];
+        $this->depends = [\yii\web\JqueryAsset::class];
     }
 
 }

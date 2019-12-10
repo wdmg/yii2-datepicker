@@ -6,7 +6,7 @@ namespace wdmg\widgets;
  * Yii2 DatePicker
  *
  * @category        Widgets
- * @version         1.0.5
+ * @version         1.0.6
  * @author          Alexsander Vyshnyvetskyy <alex.vyshnyvetskyy@gmail.com>
  * @link            https://github.com/wdmg/yii2-datepicker
  * @copyright       Copyright (c) 2019 W.D.M.Group, Ukraine
@@ -25,7 +25,7 @@ class DatePicker extends InputWidget
 {
 
     public $addon = null;
-    //public $template = "{label}\n{beginWrapper}\n{input}{addon}\n{hint}\n{error}\n{endWrapper}";
+
     public $template = "{input}{addon}";
 
     public $options = [

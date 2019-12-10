@@ -47,7 +47,7 @@ Example of use with ActiveForm:
     
     $form = ActiveForm::begin();
     ...
-    echo $form->field($model, 'datetime')->widget(DatePicker::className(), [
+    echo $form->field($model, 'datetime')->widget(DatePicker::class, [
         'options' => [
             'class' => 'form-control'
         ],
@@ -83,4 +83,5 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
+* v.1.0.6 - Fixed deprecated class declaration
 * v.1.0.5 - Update Yii2 version
