@@ -1,11 +1,15 @@
-[![Progress](https://img.shields.io/badge/required-Yii2_v2.0.13-blue.svg)](https://packagist.org/packages/yiisoft/yii2) [![Github all releases](https://img.shields.io/github/downloads/wdmg/yii2-datepicker/total.svg)](https://GitHub.com/wdmg/yii2-datepicker/releases/) [![GitHub version](https://badge.fury.io/gh/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker) ![Progress](https://img.shields.io/badge/progress-in_development-red.svg) [![GitHub license](https://img.shields.io/github/license/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker/blob/master/LICENSE)
+[![Progress](https://img.shields.io/badge/required-Yii2_v2.0.33-blue.svg)](https://packagist.org/packages/yiisoft/yii2)
+[![Github all releases](https://img.shields.io/github/downloads/wdmg/yii2-datepicker/total.svg)](https://GitHub.com/wdmg/yii2-datepicker/releases/)
+[![GitHub version](https://badge.fury.io/gh/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker)
+![Progress](https://img.shields.io/badge/progress-in_development-red.svg)
+[![GitHub license](https://img.shields.io/github/license/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker/blob/master/LICENSE)
 
 # Yii2 DatePicker
 Bootstrap3 DatePicker Widget for Yii2
 
 # Requirements 
 * PHP 5.6 or higher
-* Yii2 v.2.0.20 and newest
+* Yii2 v.2.0.33 and newest
 * Yii2 Bootstrap
 * [Bootstrap DatePicker](https://github.com/wdmg/bootstrap-datepicker) v.1.1.0 and newest.
 
@@ -83,5 +87,6 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
+* v.1.0.7 - Up to date dependencies
 * v.1.0.6 - Fixed deprecated class declaration
 * v.1.0.5 - Update Yii2 version

@@ -6,7 +6,7 @@ namespace wdmg\widgets;
  * Yii2 DatePicker
  *
  * @category        Widgets
- * @version         1.0.6
+ * @version         1.0.7
  * @author          Alexsander Vyshnyvetskyy <alex.vyshnyvetskyy@gmail.com>
  * @link            https://github.com/wdmg/yii2-datepicker
  * @copyright       Copyright (c) 2019 - 2020 W.D.M.Group, Ukraine
