@@ -87,6 +87,7 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
 # Status and version
+* v.1.0.8 - Fixed widget ID and init after Pjax reloading
 * v.1.0.7 - Up to date dependencies
 * v.1.0.6 - Fixed deprecated class declaration
 * v.1.0.5 - Update Yii2 version

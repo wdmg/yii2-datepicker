@@ -6,7 +6,7 @@ namespace wdmg\widgets;
  * Yii2 DatePicker
  *
  * @category        Widgets
- * @version         1.0.7
+ * @version         1.0.8
  * @author          Alexsander Vyshnyvetskyy <alex.vyshnyvetskyy@gmail.com>
  * @link            https://github.com/wdmg/yii2-datepicker
  * @copyright       Copyright (c) 2019 - 2020 W.D.M.Group, Ukraine
@@ -72,11 +72,6 @@ class DatePicker extends InputWidget
      */
     public function run()
     {
-        // Input field
-        if($this->hasModel())
-            $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
-        else
-            $input = Html::textInput($this->name, $this->value, $this->options);
 
         // Input addon
         if(!$this->addon)
@@ -96,6 +91,20 @@ class DatePicker extends InputWidget
             'class' => 'input-group',
             'data-rel' => 'datepicker'
         ]);
+
+        // Get input id
+        if (isset($this->options['id']))
+            $this->datepickerId = $this->options['id'];
+        else
+            $this->datepickerId = $this->getId();
+
+        $this->options['id'] = $this->datepickerId;
+
+        // Input field
+        if($this->hasModel())
+            $input = Html::activeTextInput($this->model, $this->attribute, $this->options);
+        else
+            $input = Html::textInput($this->name, $this->value, $this->options);
 
         // Collect tags to complate widget
         $input = strtr($this->template, ['{label}' => '', '{beginWrapper}' => '', '{input}' => $input, '{addon}' => $this->addon, '{hint}' => '', '{error}' => $error, '{endWrapper}' => '']);
@@ -120,6 +129,9 @@ class DatePicker extends InputWidget
         // Parse plugin options and insert inline
         $pluginOptions = !empty($this->pluginOptions) ? Json::encode($this->pluginOptions) : '';
         $js[] = "; jQuery('#" . $this->datepickerId . "').datepicker($pluginOptions);";
+        $js[] = "; jQuery(document).on('pjax:success', function() {
+            jQuery('#" . $this->datepickerId . "').datepicker($pluginOptions);
+        });";
 
         // Register datepicker component initial script
         $view->registerJs(implode("\n", $js));
