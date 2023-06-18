@@ -4,7 +4,7 @@
   "keywords": ["yii", "yii2", "extension", "datepicker", "bootstrap", "widget", "wdmg"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "homepage": "https://github.com/wdmg/yii2-datepicker",
   "support": {
     "source": "https://github.com/wdmg/yii2-datepicker",
@@ -23,7 +23,7 @@
   "require": {
     "yiisoft/yii2": "^2.0.33",
     "yiisoft/yii2-bootstrap": "*",
-    "bower-asset/bootstrap-datepicker-plugin": "^1.1.0"
+    "bower-asset/bootstrap-datepicker-plugin": "^1.1.1"
   },
   "minimum-stability": "dev",
   "autoload": {

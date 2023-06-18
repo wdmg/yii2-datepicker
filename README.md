@@ -1,6 +1,6 @@
-[![Yii2](https://img.shields.io/badge/required-Yii2_v2.0.33-blue.svg)](https://packagist.org/packages/yiisoft/yii2)
-[![Downloads](https://img.shields.io/packagist/dt/wdmg/yii2-datepicker.svg)](https://packagist.org/packages/wdmg/yii2-datepicker)
-[![Packagist Version](https://img.shields.io/packagist/v/wdmg/yii2-datepicker.svg)](https://packagist.org/packages/wdmg/yii2-datepicker)
+[![Progress](https://img.shields.io/badge/required-Yii2_v2.0.33-blue.svg)](https://packagist.org/packages/yiisoft/yii2)
+[![Github all releases](https://img.shields.io/github/downloads/wdmg/yii2-datepicker/total.svg)](https://GitHub.com/wdmg/yii2-datepicker/releases/)
+[![GitHub version](https://badge.fury.io/gh/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker)
 ![Progress](https://img.shields.io/badge/progress-in_development-red.svg)
 [![GitHub license](https://img.shields.io/github/license/wdmg/yii2-datepicker.svg)](https://github.com/wdmg/yii2-datepicker/blob/master/LICENSE)
 
@@ -86,8 +86,6 @@ DatePicker extends InputWidget so you can use any options available for this wid
 | addonButtonTag         | string  | button                    | Tag who will display a DatePicker widget for input. |
 | addonButtonOptions     | array   | `['class' => 'btn btn-default', 'type' => 'button']` | Options of tag who will display a DatePicker widget for input. |
 
-# Status and version [in progress development]
+# Status and version
+* v.1.1.0 - Update copyrights and dependencies
 * v.1.0.8 - Fixed widget ID and init after Pjax reloading
-* v.1.0.7 - Up to date dependencies
-* v.1.0.6 - Fixed deprecated class declaration
-* v.1.0.5 - Update Yii2 version
